@@ -1,0 +1,40 @@
+table users {
+  id int [pk, increment]
+  name varchar(100) 
+  email varchar(100) [unique]
+  password varchar(255)
+  remember_token varchar(100)
+}
+
+// Tabla para categorías de ingresos y egresos
+
+table categories {
+  id int [pk, increment]
+  name varchar(100)
+  type enum('ingreso', 'egreso')
+}
+
+//table para registrar transacciones financieras
+
+table transactions {
+  id int [pk, increment]
+  user_id int [ref: > users.id]
+  category_id int [ref: > categories.id]
+  type enum('ingreso', 'egreso')
+  amount decimal(10, 2)
+  description varchar(255)
+  image_path varchar(255) [null]
+  transaction_date datetime
+}
+
+//presupuesto mensual por usuario
+
+table budgets {
+  id int [pk, increment]
+  user_id int [ref: > users.id]
+  category_id int [ref: > categories.id]
+  amount_assigned decimal(10, 2)
+  amount_spent decimal(10, 2)
+  month varchar(20)
+  year interger 
+}
