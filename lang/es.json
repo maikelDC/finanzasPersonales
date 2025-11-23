@@ -233,5 +233,9 @@
     "category": "Categoría",
     "categories": "Categorías",
     "transaction": "Transacción",
-    "transactions": "Transacciones"
+    "transactions": "Transacciones",
+    "Amount": "Cantidad",
+    "Description": "Descripción",
+    "Transaction Date": "Fecha de la transacción",
+    "Category Type": "Tipo de categoría"
 }

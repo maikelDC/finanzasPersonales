@@ -12,7 +12,7 @@ class EditTransaction extends EditRecord
 {
     protected static string $resource = TransactionResource::class;
 
-    protected function getRedirectUrl(): string
+      protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
     }
@@ -25,8 +25,8 @@ class EditTransaction extends EditRecord
     protected function afterSave(): void
     {
         Notification::make()
-            ->title('Transacción actualizada exitosamente')
-            ->body('La transacción ha sido actualizada.')
+            ->title('La transación actualizada exitosamente')
+            ->body('La transación ha sido actualizada.')
             ->success()
             ->send();
     }
@@ -36,12 +36,12 @@ class EditTransaction extends EditRecord
         return [
             ViewAction::make(),
             DeleteAction::make()
-                ->successNotification
-                (Notification::make()
-                    ->title('Transacción eliminada exitosamente')
-                    ->body('La transacción ha sido eliminada.')
-                    ->success()
-                ),
+            ->successNotification
+            (Notification::make()
+                ->title('Transacción eliminada exitosamente')
+                ->body('La transacción ha sido eliminada.')
+                ->success()
+            )
         ];
     }
 }

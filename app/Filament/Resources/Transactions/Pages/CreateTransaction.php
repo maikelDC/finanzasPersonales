@@ -28,4 +28,20 @@ class CreateTransaction extends CreateRecord
             ->success()
             ->send();
     }
+
+     protected function getFormActions(): array
+    {
+        return [
+          
+            $this->getCreateFormAction()
+              ->label('Registrar'),
+          
+             // $this->getCreateAnotherFormAction()
+              //->label('Registrar y crear otra'), 
+          
+              $this->getCancelFormAction()
+              ->label('Cancelar')
+              ->color('danger'), 
+        ];
+}
 }
