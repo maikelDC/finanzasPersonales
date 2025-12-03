@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Budgets\Pages;
 
 use App\Filament\Resources\Budgets\BudgetResource;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateBudget extends CreateRecord
@@ -21,10 +22,26 @@ class CreateBudget extends CreateRecord
 
     protected function afterCreate(): void
     {
-        \Filament\Notifications\Notification::make()
+        Notification::make()
             ->title('Presupuesto creado exitosamente')
             ->body('El presupuesto ha sido creado.')
             ->success()
             ->send();
     }
+
+    protected function getFormActions(): array
+    {
+        return [
+          
+            $this->getCreateFormAction()
+                ->label('Registrar'),
+          
+             // $this->getCreateAnotherFormAction()
+              //->label('Registrar y crear otra'), 
+          
+              $this->getCancelFormAction()
+              ->label('Cancelar')
+              ->color('danger'), 
+        ];
+}
 }

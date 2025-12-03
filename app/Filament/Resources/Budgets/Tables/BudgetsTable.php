@@ -15,21 +15,29 @@ class BudgetsTable
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
-                    ->numeric()
+                  TextColumn::make('id')
+                    ->label('#')
+                    ->sortable()
+                    ->rowIndex(),
+                TextColumn::make('user.name')
+                    ->label(__('User'))
                     ->sortable(),
-                TextColumn::make('category_id')
-                    ->numeric()
+                TextColumn::make('category.name')
+                    ->label(__('category'))
                     ->sortable(),
                 TextColumn::make('amount_assigned')
+                    ->label(__('Amount Assigned'))
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('amount_spent')
+                    ->label(__('Amount Spent'))
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('month')
+                    ->label(__('Month'))
                     ->searchable(),
                 TextColumn::make('year')
+                    ->label(__('Year'))
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

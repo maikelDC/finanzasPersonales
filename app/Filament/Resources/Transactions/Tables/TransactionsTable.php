@@ -14,6 +14,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class TransactionsTable
 {
@@ -35,6 +36,7 @@ class TransactionsTable
                     ->sortable(),
                 TextColumn::make('category.type')
                     ->label(__('Category Type'))
+                    ->sortable()
                     ->sortable(),
                 TextColumn::make('amount')
                     ->label('Monto')
@@ -56,7 +58,7 @@ class TransactionsTable
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()
-                    ->sortable()
+                    ->sortable()    
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
                     ->label(__('Updated At'))
@@ -65,14 +67,18 @@ class TransactionsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //  SelectFilter::make('category.type')
-                // ->label(__('Type'))
-                // ->options([
-                //     'ingreso' => 'ingreso',
-                //     'egreso' => 'egreso',
-                // ])
-                // ->placeholder('Filtrar por tipo')
-                // ->label(__('Type')),
+                // SelectFilter::make('categories_type')
+                //     ->label(__('Category Type'))
+                //     ->options([
+                //         'ingreso' => 'ingreso',
+                //         'egreso' => 'egreso',
+                //     ])
+                //     ->placeholder('Filtrar por tipo de categoría')
+                //     ->query(function (Builder $query, array $data): Builder {
+                //         return $query->whereHas('category', function (Builder $query) use ($data) {
+                //             $query->where('type', $data['value']);
+                //         });
+                //     }),
             ])
             ->recordActions([
                 

@@ -43,5 +43,6 @@ class CreateTransaction extends CreateRecord
               ->label('Cancelar')
               ->color('danger'), 
         ];
-}
+} 
+
 }

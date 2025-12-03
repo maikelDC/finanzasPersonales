@@ -237,5 +237,9 @@
     "Amount": "Cantidad",
     "Description": "Descripción",
     "Transaction Date": "Fecha de la transacción",
-    "Category Type": "Tipo de categoría"
+    "Category Type": "Tipo de categoría",
+    "Amount Assigned": "Cantidad asignada",
+    "Amount Spent": "Cantidad gastada",
+    "Month": "Mes",
+    "Year": "Año"
 }
