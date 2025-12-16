@@ -24,4 +24,9 @@ class Budget extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getAvailableAttribute()
+    {
+        return $this->amount_assigned - $this->amount_spent;
+    }
 }

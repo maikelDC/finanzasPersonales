@@ -37,7 +37,7 @@ class BudgetForm
                     ->required()
                     ->numeric()
                     ->default(0.00)
-                    ->disabled(),
+                    ->readOnly(),
                 TextInput::make('month')
                     ->label(__('Month'))
                     ->required(),

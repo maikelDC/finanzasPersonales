@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use function Symfony\Component\Clock\now;
+
 class Transaction extends Model
 {
     protected $fillable = [
@@ -24,4 +26,7 @@ class Transaction extends Model
     {
         return $this->belongsTo(Category::class);
     }
-}
+     
+   
+    }
+

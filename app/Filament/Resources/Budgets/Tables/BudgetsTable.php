@@ -3,9 +3,11 @@
 namespace App\Filament\Resources\Budgets\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Notifications\Notification;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -52,8 +54,21 @@ class BudgetsTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
+                  ViewAction::make(),
+                
+                EditAction::make()
+                ->button()
+                ->color('success'),
+
+                DeleteAction::make()
+                ->button()
+                ->color('danger')
+                 ->successNotification
+                    (Notification::make()
+                ->title('Presupuesto eliminado exitosamente')
+                ->body('El presupuesto ha sido eliminado.')
+                ->success()
+                     ),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

@@ -76,6 +76,7 @@ class CategoriesTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
+                
             ]);
     }
 }
