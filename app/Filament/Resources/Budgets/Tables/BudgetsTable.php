@@ -31,9 +31,15 @@ class BudgetsTable
                     ->label(__('Amount Assigned'))
                     ->numeric()
                     ->sortable(),
+                 TextColumn::make('available')
+                    ->label('Disponible')
+                    ->numeric()
+                    ->color(fn($record) => $record->available >= 0 ? 'success' : 'danger')
+                    ->sortable(),
                 TextColumn::make('amount_spent')
                     ->label(__('Amount Spent'))
                     ->numeric()
+                    ->color('danger')
                     ->sortable(),
                 TextColumn::make('month')
                     ->label(__('Month'))
