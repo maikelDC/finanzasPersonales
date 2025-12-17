@@ -67,18 +67,22 @@ class TransactionsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                SelectFilter::make('categories_type')
+
+
+
+                SelectFilter::make('category_type')
                     ->label(__('Category Type'))
                     ->options([
                         'ingreso' => 'ingreso',
                         'egreso' => 'egreso',
                     ])
                     ->placeholder('Filtrar por tipo de categoría')
-                    ->native(false)
-                    ->query(function (Builder $query, array $data): Builder {
-                        return $query->whereHas('category', function (Builder $query) use ($data) {
+                  
+                    ->query(function ( $query, array $data) {
+
+                        return $data['value'] ? $query->whereHas('category', function ($query) use ($data) {
                             $query->where('type', $data['value']);
-                        });
+                        }) : $query;
                     }),
             ])
             ->recordActions([
