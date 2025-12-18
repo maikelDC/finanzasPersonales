@@ -9,6 +9,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class BudgetsTable
@@ -57,7 +58,20 @@ class BudgetsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('category_type')
+                    ->label(__('Category Type'))
+                    ->options([
+                        'ingreso' => 'ingreso',
+                        'egreso' => 'egreso',
+                    ])
+                    ->placeholder('Filtrar por tipo de categoría')
+                  
+                    ->query(function ( $query, array $data) {
+
+                        return $data['value'] ? $query->whereHas('category', function ($query) use ($data) {
+                            $query->where('type', $data['value']);
+                        }) : $query;
+                    }),
             ])
             ->recordActions([
                   ViewAction::make(),

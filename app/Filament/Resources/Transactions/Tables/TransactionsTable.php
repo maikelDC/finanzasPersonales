@@ -37,6 +37,11 @@ class TransactionsTable
                 TextColumn::make('category.type')
                     ->label(__('Category Type'))
                     ->sortable()
+                    ->badge()
+                      ->colors([
+                        'success' => 'ingreso',
+                        'danger' => 'egreso',
+                    ])
                     ->sortable(),
                 TextColumn::make('amount')
                     ->label('Monto')
@@ -67,9 +72,6 @@ class TransactionsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-
-
-
                 SelectFilter::make('category_type')
                     ->label(__('Category Type'))
                     ->options([

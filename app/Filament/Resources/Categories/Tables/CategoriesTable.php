@@ -32,7 +32,11 @@ class CategoriesTable
                     ->label(__('Type'))
                     ->sortable()
                     ->searchable()
-                    ->badge(),
+                    ->badge()
+                      ->colors([
+                        'success' => 'ingreso',
+                        'danger' => 'egreso',
+                    ]),
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()
